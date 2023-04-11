@@ -60,7 +60,7 @@
                 <i class="bi bi-4-circle icon-help"></i><a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Hasil Perhitungan {{hasil}}<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                 <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
                   <p>
-                    {{hasil}} yang diperoleh yaitu : Belum Ditampilkan <a class="d-inline p-0" id="BacaHasil" href="#hasil">Baca Selengkapnya</a>
+                    {{hasil}} yang diperoleh yaitu : {{hasil_hitung}} <a class="d-inline p-0" id="BacaHasil" href="#hasil">Baca Selengkapnya</a>
                   </p>
                 </div>
               </li>
@@ -92,34 +92,19 @@
             <div class="col-lg-12 col-md-4 mt-4">
               <div class="icon-box aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
                 <i class="ri-price-tag-2-line" style="color: #4233ff;"></i>
-                <h3><a href="">Hasil : </a></h3>
+                <h3><a href="">Hasil Z : {{hasil_hitung}}</a></h3>
               </div>
             </div>
-    
+            {% if variabel_hasil %}
+            {% for key, value in variabel_hasil.items %}
             <div class="col-lg-3 col-md-4 mt-4">
               <div class="icon-box aos-init aos-animate" data-aos="zoom-in" data-aos-delay="200">
                 <i class="ri-database-2-line" style="color: #47aeff;"></i>
-                <h3>X1 = ?</h3>
+                <h3>{{key}} = {{value | safe}}</h3>
               </div>
             </div>
-            <div class="col-lg-3 col-md-4 mt-4">
-              <div class="icon-box aos-init aos-animate" data-aos="zoom-in" data-aos-delay="250">
-                <i class="ri-database-2-line" style="color: #47aeff;"></i>
-                <h3>X1 = ?</h3>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 mt-4">
-              <div class="icon-box aos-init aos-animate" data-aos="zoom-in" data-aos-delay="300">
-                <i class="ri-database-2-line" style="color: #47aeff;"></i>
-                <h3>X1 = ?</h3>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 mt-4">
-              <div class="icon-box aos-init aos-animate" data-aos="zoom-in" data-aos-delay="350">
-                <i class="ri-database-2-line" style="color: #47aeff;"></i>
-                <h3>X1 = ?</h3>
-              </div>
-            </div>
+            {% endfor %}
+            {% endif %}
           </div>
     
         </div>

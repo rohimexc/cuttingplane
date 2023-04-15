@@ -1,4 +1,7 @@
 from koefisien import koefisien
+from simpleks import simplex_tableau
+import numpy as np
+import pandas as pd
 fungsikendala={
     'y1':'150X1+150X2+300X3<=25000',
     'y2':'15X1+15X2+30X3<=15000',
@@ -17,3 +20,27 @@ fungsikendala={
 }
 fungsitujuan= '40000X1+40000X2+40000X3'
 header,indeks,data=koefisien(fungsikendala,fungsitujuan)
+
+df = pd.DataFrame(data,columns=header) 
+df = df.set_index('vd') 
+df = df.reset_index()
+df['vd'] = indeks
+df = df.set_index('vd')
+df = df.replace("M",np.nan)
+
+
+while True:
+    try:
+        df = simplex_tableau(df)
+        not_negative = (df.loc['z', :] >= 0).all()
+        if not_negative:
+            df = df.round(4)
+            break
+        else:
+            df = simplex_tableau(df)
+            df = df.round(4)
+            print(df)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        break
+

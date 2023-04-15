@@ -43,7 +43,7 @@
                     </div>
                 </div>
               </li>
-  
+              {% if tabel_cutting_plane %}
               <li data-aos="fade-up" data-aos-delay="200">
                 <i class="bi bi-3-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Cutting Plane<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                 <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
@@ -55,7 +55,14 @@
                   {% endfor %}
                 </div>
               </li>
-  
+              {% else %}
+              <li data-aos="fade-up" data-aos-delay="200">
+                <i class="bi bi-3-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Cutting Plane<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+                  <h4 class="mt-3">Tidak Memerlukan Metode Cutting Plane</h4>
+                </div>
+              </li>
+              {% endif %}
               <li data-aos="fade-up" data-aos-delay="300">
                 <i class="bi bi-4-circle icon-help"></i><a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Hasil Perhitungan {{hasil}}<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                 <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
@@ -92,12 +99,12 @@
             <div class="col-lg-12 col-md-4 mt-4">
               <div class="icon-box aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
                 <i class="ri-price-tag-2-line" style="color: #4233ff;"></i>
-                <h3><a href="">Hasil Z : {{hasil_hitung}}</a></h3>
+                <h3>Hasil Z ({{hasil}}) : {{hasil_hitung}}</h3>
               </div>
             </div>
             {% if variabel_hasil %}
             {% for key, value in variabel_hasil.items %}
-            <div class="col-lg-3 col-md-4 mt-4">
+            <div class="col-lg-{{jumlah_grid}} col-md-4 mt-4">
               <div class="icon-box aos-init aos-animate" data-aos="zoom-in" data-aos-delay="200">
                 <i class="ri-database-2-line" style="color: #47aeff;"></i>
                 <h3>{{key}} = {{value | safe}}</h3>

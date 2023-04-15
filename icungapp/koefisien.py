@@ -102,7 +102,7 @@ def koefisien(fungsikendala,fungsitujuan):
     
   z_awal=[]
   for a in range(len(koefkendala)):
-    z_awal.append(0)
+    z_awal.append(1)
   z_awal[0]=1
     
   for i in range(len(koefkendala)):
